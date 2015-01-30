@@ -30,6 +30,14 @@ the file <code>plan/main</code> is able to be represented as:
 
 ```
 
+Also you have to change Makefile in an integration source tree, file <code>Makefile</code>
+
+```
+# your options here
+
+include $(FAB_PATH)/common/mk/tiny.mk
+```
+
 That's all. To setup default root password see
-[example here](https://github.com/gh0stwizard/turnkey-tiny/blob/master/conf.d/rootpasswd)
+[example here](https://github.com/gh0stwizard/turnkey-tiny/blob/master/conf.d/rootpasswd).
 
