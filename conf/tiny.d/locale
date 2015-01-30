@@ -1,0 +1,45 @@
+#!/bin/sh -e
+
+sed -i '/^#\s*en_US/ s/#\s*//' /etc/locale.gen
+
+cat >> /etc/default/locale << EOF
+LANG=en_US.UTF-8
+LANGUAGE=en_US.UTF-8
+EOF
+
+cat > /etc/locale.nopurge << EOF
+## Configuration file for localepurge(8)
+
+# Remove localized man pages
+MANDELETE
+
+# Delete new locales which appear on the system without bothering you
+DONTBOTHERNEWLOCALE
+
+# Display freed disk space when purging superfluous data
+#SHOWFREEDSPACE
+
+# Use faster (but less accurate) free space calculation
+#QUICKNDIRTYCALC
+
+# Display verbose output
+#VERBOSE
+
+# Keep these locales after package installations via apt-get(8)
+en
+en_US
+en_US.UTF-8
+EOF
+
+if [ -f /usr/sbin/locale-gen ]; then
+    /usr/sbin/locale-gen
+else
+    echo "ERROR: locale-gen not found"
+fi
+
+if [ -f /usr/sbin/localepurge ]; then
+    /usr/sbin/localepurge
+else
+    echo "ERROR: localepurge not found"
+fi
+

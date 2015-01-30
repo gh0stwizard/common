@@ -1,0 +1,35 @@
+#include <boot>
+#include <net>
+#include <console>
+
+lvm2
+localepurge
+console-tools
+whiptail
+lsb-release
+
+di-live
+file
+eject
+resolvconf
+
+python-dialog
+turnkey-pylib
+turnkey-sysinfo
+turnkey-version
+
+cron
+cron-apt
+
+logrotate
+rsyslog
+
+iptables
+ssh
+openssl
+ntp
+
+#ifndef CHROOT_ONLY
+acpi-support-base
+#endif
+
